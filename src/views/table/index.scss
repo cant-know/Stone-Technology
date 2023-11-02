@@ -1,0 +1,21 @@
+th.column-money,
+td.column-money {
+  text-align: right !important;
+}
+
+::v-deep(.ant-table-footer){
+  display: flex;
+  .pagination{
+    transform: translateX(60%);
+  }
+}
+
+::v-deep(.ant-pagination-mini){
+  display: flex;
+  justify-content: center;
+}
+
+::v-deep(.ant-btn){
+  width: 80px;
+  margin: 0px 10px;
+}

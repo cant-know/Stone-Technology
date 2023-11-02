@@ -1,0 +1,42 @@
+.container{
+  background-color: #100C2A;
+  // background-image: url('../../assets/bg.png');
+  display: flex;
+  justify-content: space-around;
+  .left{
+    height: 100%;
+    width: 30%;
+  }
+  .middle{
+    height: 100%;
+    width: 40%;
+    .map{
+      height: 75%;
+    }
+    .title{
+      height: 20%;
+      margin: 20px 0px;
+      color: yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 55px;
+      .sum{
+        margin-top: 86px;
+      }
+      .mom{
+        font-size: 33px;
+        margin-top: 36px;
+      }
+    }
+  }
+  .right{
+    height: 100%;
+    width: 30%;
+  }
+  .item{
+    height: 44%;
+    margin: 50px 20px;
+  }
+}

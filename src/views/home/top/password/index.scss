@@ -1,0 +1,22 @@
+.password{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  .fake{
+    text-decoration: line-through;
+  }
+  h1{
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+  .ant-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    .ant-btn{
+      transform: translateX(-160px);
+    }
+  }
+}

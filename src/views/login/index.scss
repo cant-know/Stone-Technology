@@ -1,0 +1,66 @@
+.container{
+  background-color: #050505;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .picture{
+    width: 20%;
+  }
+  .login{
+    width: 40%;
+    height: 100%;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .box{
+      height: 80%;
+      width: 85%;
+      background-color: white;
+      opacity: 0.5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      .header{
+        cursor: default;
+        font-size: 50px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        color: black;
+        .top{
+          margin-top: 66px;
+          margin-left: -14px;
+        }
+        .bottom{
+          margin-top: 33px;
+        }
+      }
+      .ant-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .ant-form-item{
+          width: 400px;
+          margin-top: 20px;
+          margin-bottom: 36px;
+          transform: translateX(-50px);
+          ::v-deep(.ant-form-item-control-input-content){
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .ant-btn{
+              transform: translateX(-90px);
+              min-width: 100px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
