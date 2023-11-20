@@ -34,13 +34,13 @@ function init() {
   scene.background = new THREE.Color( 0x050505 );
   scene.fog = new THREE.Fog( 0x050505, 2000, 3500 );
 
-  scene.add( new THREE.AmbientLight( 0x444444, 3 ) );
+  scene.add( new THREE.AmbientLight( 0x444444, 1 ) );
 
-  const light1 = new THREE.DirectionalLight( 0xffffff, 1.5 );
+  const light1 = new THREE.DirectionalLight( 0xffffff, 1.2);
   light1.position.set( 1, 1, 1 );
   scene.add( light1 );
 
-  const light2 = new THREE.DirectionalLight( 0xffffff, 4.5 );
+  const light2 = new THREE.DirectionalLight( 0xffffff, 1.2);
   light2.position.set( 0, - 1, 0 );
   scene.add( light2 );
 

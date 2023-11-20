@@ -19,3 +19,12 @@ td.column-money {
   width: 80px;
   margin: 0px 10px;
 }
+
+::v-deep(.ant-table-title){
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  .ant-input-search-button{
+    transform: translateX(-10px);
+  }
+}

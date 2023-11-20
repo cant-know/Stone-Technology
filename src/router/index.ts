@@ -28,12 +28,22 @@ export default createRouter({
           component: import('../views/welcome/index.vue')
         },
         {
-          path: 'echarts',
-          component: import('../views/echarts/index.vue')
-        },
-        {
           path: 'table',
           component: import('../views/table/index.vue')
+        },
+        {
+          path: 'cool',
+          redirect: '/home/cool/car',
+          children: [
+            {
+              path: 'car',
+              component: import('../views/threejs/car/index.vue')
+            },
+            {
+              path: 'land',
+              component: import('../views/threejs/land/index.vue')
+            },
+          ]
         },
         {
           path: 'about',

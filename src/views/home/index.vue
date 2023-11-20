@@ -14,21 +14,21 @@
           <desktop-outlined />
           <span>数据大屏</span>
         </a-menu-item>
-        <a-sub-menu key="3" @click="changeRoute(3)">
-          <template #title>
-            <span>
-              <user-outlined />
-              <span>Echarts</span>
-            </span>
-          </template>
-          <a-menu-item key="31">Tom</a-menu-item>
-          <a-menu-item key="32">Bill</a-menu-item>
-          <a-menu-item key="33">Alex</a-menu-item>
-        </a-sub-menu>
-        <a-menu-item key="4" @click="changeRoute(4)">
+        <a-menu-item key="3" @click="changeRoute(3)">
           <desktop-outlined />
           <span>超级表格</span>
         </a-menu-item>
+        <a-sub-menu key="sub1">
+          <template #title>
+            <span>
+              <user-outlined />
+              <span>Three.js</span>
+            </span>
+          </template>
+          <a-menu-item key="41" @click="changeRoute(41)">汽车展示</a-menu-item>
+          <a-menu-item key="42" @click="changeRoute(42)">净心小岛</a-menu-item>
+          <a-menu-item key="43" @click="changeRoute(43)">Alex</a-menu-item>
+        </a-sub-menu>
         <a-menu-item key="5" @click="changeRoute(5)">
           <file-outlined />
           <span>关于项目</span>
@@ -56,7 +56,6 @@
 import {
   PieChartOutlined,
   DesktopOutlined,
-  UserOutlined,
   FileOutlined,
 } from '@ant-design/icons-vue';
 import { onMounted, ref } from 'vue';
@@ -84,8 +83,9 @@ const onCollapse = () => {
 const changeRoute = (key:number) => {
   switch(key){
     case 1: $router.push({path: '/home/welcome'});break
-    case 3: $router.push({path: '/home/echarts'});break
-    case 4: $router.push({path: '/home/table'});break
+    case 3: $router.push({path: '/home/table'});break
+    case 41: $router.push({path: '/home/cool/car'});break
+    case 42: $router.push({path: '/home/cool/land'});break
     case 5: $router.push({path: '/home/about'});break
   }
 }

@@ -21,7 +21,7 @@
         >
         <Form></Form>
       </a-drawer>
-      <a-button @click="onEdit(rowId)" type="primary">修改</a-button>
+      <a-button @click="onEdit(rowId)" type="primary" :disabled="btnState">修改</a-button>
       <a-drawer
         v-model:open="open"
         class="custom-class"
@@ -32,7 +32,14 @@
       >
       <Form></Form>
       </a-drawer>
-      <a-button danger @click="onDeleteData(rowId)">删除</a-button>
+      <a-button danger @click="onDeleteData(rowId)" :disabled="btnState">删除</a-button>
+      <a-input-search
+        v-model:value="name"
+        placeholder="请输入查找人姓名的关键字"
+        enter-button
+        size="large"
+        @search="onSearch"
+    />
     </template>
     <template #footer>
       <Pagination></Pagination>
@@ -45,7 +52,7 @@ import Pagination from './pagination/index.vue';
 import useTableStore from '../../store/modules/table.ts'
 import Form from './drawer/index.vue'
 import type { TableProps, TableColumnType } from 'ant-design-vue';
-import { getDeleteData } from '../../api/table/index.ts'
+import { getDeleteData, getSearchData } from '../../api/table/index.ts'
 
 interface DataType {
   key: string;
@@ -54,7 +61,10 @@ interface DataType {
   address: string;
 }
 
+let fuck = 1
+let btnState = ref<boolean>(true)
 let rowId = ref<string>('1')
+let name = ref<string>('')
 const tableStore = useTableStore()
 const open = ref<boolean>(false);
 
@@ -90,11 +100,27 @@ const onEdit = (id:string) => {
   open.value = true;
 };
 
+const onDeleteData = async (id:string) => {
+  await getDeleteData({id: id})
+  history.go(0)
+}
+
+const onSearch = async () => {
+  const result = await getSearchData(name.value)
+  tableStore.table = result
+}
+
 const rowSelection: TableProps['rowSelection'] = {
-  onChange: (selectedRowKeys: string, selectedRows: DataType[]) => {
+  hideSelectAll: true,
+  onChange: (selectedRowKeys: string) => {
     rowId.value = selectedRowKeys.toString()
-    console.log(rowId.value)
-    // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    if(rowId.value.length < 5 && fuck === 1){
+      fuck--
+      btnState.value = false
+    }else{
+      fuck = 1
+      btnState.value = true
+    }
   },
   getCheckboxProps: (record: DataType) => ({
     disabled: record.name === 'Disabled User',
@@ -102,10 +128,6 @@ const rowSelection: TableProps['rowSelection'] = {
   }),
 };
 
-const onDeleteData = async (id:string) => {
-  await getDeleteData({id: id})
-  history.go(0)
-}
 </script>
 <style lang="scss" scoped>
 @import './index.scss'
